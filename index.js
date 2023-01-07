@@ -8,7 +8,9 @@ app.listen(PORT, () => console.log(`Server running on ${PORT}`));
 
 
 app.get("/", (req, res) => {
-  res.send("Hey this is my API running 🥳");
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+  res.end(`Hello! Go to item`);
 });
 app.get("/about", (req, res) => {
   res.send("This is my about route..... ");
